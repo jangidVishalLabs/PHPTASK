@@ -16,8 +16,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         require_once 'dbh.inc.php';
-        require_once 'signup_model.inc.php';
-        require_once 'signup_controller.inc.php';
+        require_once '../models/signup_model.inc.php';
+        require_once '../controllers/signup_controller.inc.php';
 
         // Error Handlers
         $errors = [];
@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Create User
             $response = create_user($pdo, $first_name, $last_name, $username, $email, $mobile, $gender, $password);
-            header('Location: ../index.php?signup=success');
+            header('Location: ../pages/login.php?signup=success');
 
             $pdo = null;
             $stmt = null;

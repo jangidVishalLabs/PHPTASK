@@ -1,6 +1,6 @@
 <?php 
     require_once '../includes/config_session.inc.php';
-    require_once '../includes/signup_view.inc.php';
+    require_once '../view/signup_view.inc.php';
 ?>
 
 <!doctype html>
@@ -18,7 +18,7 @@
 			<h1>Create an account</h1>
 			<p class="muted">Quick and secure — join us today.</p>
 
-			<form id="signupForm" action="../includes/signup.inc.php" method="post" novalidate>
+			<form id="signupForm" action="../view/signup.inc.php" method="post" novalidate>
 				<div class="row">
 					<div class="field half">
 						<label for="first_name">First Name</label>

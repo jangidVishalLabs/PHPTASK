@@ -6,8 +6,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         require_once 'dbh.inc.php';
-        require_once 'login_model.inc.php';
-        require_once 'login_controller.inc.php';
+        require_once '../models/login_model.inc.php';
+        require_once '../controllers/login_controller.inc.php';
 
         // Error Handlers
         $errors = [];

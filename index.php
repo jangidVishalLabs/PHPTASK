@@ -2,207 +2,252 @@
 session_start();
 function e($s){ return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 $loggedIn = !empty($_SESSION['username']) || !empty($_SESSION['first_name']);
+if(!$loggedIn) {
+    header('Location: pages/login.php');
+    exit;
+}
 $displayName = $loggedIn ? ($_SESSION['first_name'] ?? $_SESSION['username']) : '';
 ?>
-<!doctype html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WealthPro — Wealth Management</title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <meta name="robots" content="noindex">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinFlow - Smart Finance Manager for Your Business</title>
+  <meta name="description" content="All-in-one finance management platform for startups and small businesses."/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="form-page">
-        <nav class="nav form-card" aria-label="Main navigation">
-            <div class="brand">WealthPro</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#how">How it works</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">FinFlow</div>
+      <div class="user-menu">
+        <span class="username">Welcome, <?php echo e($displayName); ?></span>
+        <form action="includes/logout.inc.php" method="post" style="display:inline;">
+        <button class="btn-signout">Sign Out</button>
+        </form> 
+      </div>
+    </div>
+  </header>
 
-                <?php if ($loggedIn): ?>
-                    <span class="welcome-text">Welcome, <?php echo e($displayName); ?></span>
-                    <a class="link" href="php/logout.php">Sign out</a>
-                <?php else: ?>
-                    <a class="btn primary" href="pages/login.php">Login</a>
-                    <a class="link" href="pages/signup.php">Sign up</a>
-                <?php endif; ?>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Take Control of Your Business Finances</h1>
+      <p>Smart, simple, and secure finance management platform built for modern startups and growing businesses.</p>
+      <button class="btn-primary">Get Started Free</button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About FinFlow</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Automated Invoicing</h3>
+          <p>Create, send, and track professional invoices in seconds. Get paid faster with automated reminders.</p>
+        </div>
+        <div class="about-card">
+          <h3>Real-time Insights</h3>
+          <p>Beautiful dashboards and reports that give you instant clarity on cash flow, expenses, and profits.</p>
+        </div>
+        <div class="about-card">
+          <h3>Bank-grade Security</h3>
+          <p>Your financial data is encrypted and protected with industry-leading security standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why-us">
+    <div class="container">
+      <h2 class="section-title">Why Choose FinFlow?</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">💸</div>
+          <h3>Save Time</h3>
+          <p>Automate repetitive tasks and focus on growing your business.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Make Better Decisions</h3>
+          <p>Data-driven insights help you understand your finances like never before.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h3>Stay Secure</h3>
+          <p>Enterprise-level encryption and regular security audits.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <h3>Grow Faster</h3>
+          <p>Tools designed specifically for startups and scaling companies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"FinFlow saved us 20+ hours per month on bookkeeping. It's a game-changer for our startup."</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah L."/>
+            <div>
+              <strong>Sarah L.</strong><br/>
+              <small>CEO, TechFlow Studio</small>
             </div>
-        </nav>
-    </header>
-
-    <main class="form-page">
-
-        <!-- HERO -->
-        <section id="home" class="form-card section hero-section">
-            <div class="hero-left">
-                <h1>Grow, protect, and optimize your wealth with confidence</h1>
-                <p class="muted">We combine data-driven strategies and personalized guidance to help you reach your financial goals.</p>
-
-                <div class="hero-buttons">
-                    <?php if (!$loggedIn): ?>
-                        <a class="btn primary" href="pages/signup.php">Get started</a>
-                        <a class="link" href="pages/login.php">Sign in</a>
-                    <?php else: ?>
-                        <a class="btn primary" href="pages/login.php">Open dashboard</a>
-                    <?php endif; ?>
-                </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"The real-time reports helped us spot cash flow issues early. Highly recommend!"</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen"/>
+            <div>
+              <strong>Michael Chen</strong><br/>
+              <small>CFO, GrowthLabs</small>
             </div>
-
-            <div class="hero-right">
-                <img src="https://via.placeholder.com/420x260?text=Wealth+Chart" alt="Wealth chart">
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>"Clean interface, powerful features, and amazing support. Best finance tool we've used."</p>
+          <div class="author">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma R."/>
+            <div>
+              <strong>Emma Rodriguez</strong><br/>
+              <small>Founder, CreativePath</small>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- SERVICES -->
-        <section id="services" class="section">
-            <div class="form-card">
-                <h2>Our services</h2>
-                <p class="muted">Comprehensive planning and investment management tailored to your life stage.</p>
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-header">
+            <h3>Starter</h3>
+            <div class="price">$19<span style="font-size:1rem;">/month</span></div>
+          </div>
+          <div class="price-body">
+            <ul>
+              <li>Up to 100 invoices/month</li>
+              <li>Basic reporting</li>
+              <li>Email support</li>
+              <li>1 user</li>
+            </ul>
+            <button class="btn-primary">Start Free Trial</button>
+          </div>
+        </div>
 
-                <div class="feature-grid">
-                    <div class="feature">
-                        <h3>Investment Management</h3>
-                        <p class="muted small">Active and passive strategies to match your risk profile.</p>
-                    </div>
+        <div class="price-card" style="transform: scale(1.05);">
+          <div class="price-header" style="background:#1e293b;">
+            <h3>Professional</h3>
+            <div class="price">$49<span style="font-size:1rem;">/month</span></div>
+            <div style="background:#fff;color:#000;padding:0.5rem;border-radius:4px;margin-top:0.5rem;font-size:0.875rem;">Most Popular</div>
+          </div>
+          <div class="price-body">
+            <ul>
+              <li>Unlimited invoices</li>
+              <li>Advanced analytics</li>
+              <li>Priority support</li>
+              <li>Up to 10 users</li>
+              <li>API access</li>
+            </ul>
+            <button class="btn-primary">Start Free Trial</button>
+          </div>
+        </div>
 
-                    <div class="feature">
-                        <h3>Financial Planning</h3>
-                        <p class="muted small">Holistic plans including retirement, tax & estate guidance.</p>
-                    </div>
+        <div class="price-card">
+          <div class="price-header">
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+          </div>
+          <div class="price-body">
+            <ul>
+              <li>Everything in Pro</li>
+              <li>Dedicated account manager</li>
+              <li>Custom integrations</li>
+              <li>Unlimited users</li>
+              <li>SLA & onboarding</li>
+            </ul>
+            <button class="btn-primary">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    <div class="feature">
-                        <h3>Tax Optimization</h3>
-                        <p class="muted small">Improve after-tax returns with proven strategies.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question">Is there a free trial?</div>
+          <p>Yes! We offer a 14-day free trial with full access to all Professional features. No credit card required.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Can I change plans later?</div>
+          <p>Absolutely. You can upgrade or downgrade your plan at any time. Changes take effect immediately.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Do you offer discounts for annual billing?</div>
+          <p>Yes, annual plans get 2 months free (16% savings).</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is my data secure?</div>
+          <p>We use bank-level 256-bit SSL encryption and are SOC 2 Type II compliant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- HOW IT WORKS -->
-        <section id="how" class="section">
-            <div class="form-card">
-                <h2>How it works</h2>
-                <p class="muted">Simple onboarding, customized plan, and ongoing monitoring.</p>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <textarea rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-                <div class="row feature-row">
-                    <div class="feature">
-                        <h4>1. Discovery</h4>
-                        <p class="muted small">Tell us your goals, risk tolerance and timelines.</p>
-                    </div>
-
-                    <div class="feature">
-                        <h4>2. Plan</h4>
-                        <p class="muted small">We design a tailored investment and financial plan.</p>
-                    </div>
-
-                    <div class="feature">
-                        <h4>3. Monitor</h4>
-                        <p class="muted small">Continuous oversight and quarterly reviews.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRICING -->
-        <section id="pricing" class="section">
-            <div class="form-card">
-                <h2>Pricing plans</h2>
-                <p class="muted">Transparent fees, no surprises.</p>
-
-                <div class="pricing-grid">
-                    <div class="plan">
-                        <h3>Starter</h3>
-                        <p class="muted">For new investors</p>
-                        <p class="price">$9/mo</p>
-                        <p class="muted small">Basic portfolio management and quarterly check-ins.</p>
-                        <a class="btn primary plan-btn" href="pages/signup.php">Choose</a>
-                    </div>
-
-                    <div class="plan">
-                        <h3>Growth</h3>
-                        <p class="muted">For active savers</p>
-                        <p class="price">$29/mo</p>
-                        <p class="muted small">Advanced strategies and monthly reporting.</p>
-                        <a class="btn primary plan-btn" href="pages/signup.php">Choose</a>
-                    </div>
-
-                    <div class="plan">
-                        <h3>Premium</h3>
-                        <p class="muted">Personalized wealth management</p>
-                        <p class="price">Custom</p>
-                        <p class="muted small">Dedicated advisor, tax & estate planning.</p>
-                        <a class="btn primary plan-btn" href="pages/signup.php">Contact us</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section id="testimonials" class="section">
-            <div class="form-card">
-                <h2>What our clients say</h2>
-
-                <div class="testimonials">
-                    <div class="feature">
-                        <strong>Anna P.</strong>
-                        <p class="muted small">"WealthPro simplified retirement planning; their team is excellent."</p>
-                    </div>
-
-                    <div class="feature">
-                        <strong>Mark R.</strong>
-                        <p class="muted small">"Clear advice and strong performance — highly recommend."</p>
-                    </div>
-
-                    <div class="feature">
-                        <strong>Leah S.</strong>
-                        <p class="muted small">"Personalized service and easy-to-use platform."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section">
-            <div class="form-card">
-                <h2>Contact us</h2>
-                <p class="muted">Questions about plans or onboarding? Send a message.</p>
-
-                <form action="#" method="post" class="contact-form">
-                    <div class="row">
-                        <div class="field"><input type="text" placeholder="Your name"></div>
-                        <div class="field"><input type="email" placeholder="Email"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="field">
-                            <textarea placeholder="Message"></textarea>
-                        </div>
-                    </div>
-
-                    <button class="btn primary">Send message</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="footer form-card">
-            <div class="footer-content">
-                <div>© <?php echo date('Y'); ?> WealthPro. All rights reserved.</div>
-                <div class="footer-links">
-                    <a class="link" href="#privacy">Privacy</a>
-                    <a class="link" href="#terms">Terms</a>
-                </div>
-            </div>
-        </footer>
-
-    </main>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#why-us">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p>&copy; 2025 FinFlow. All rights reserved.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
