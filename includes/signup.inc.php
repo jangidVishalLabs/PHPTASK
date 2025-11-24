@@ -41,7 +41,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
            }
 
            if(do_passwords_match($password, $confirm_password)) {
-            $errors[] = "Passwords do not match.";}
+            $errors[] = "Passwords do not match.";
+        }
 
 
             require_once 'config_session.inc.php';

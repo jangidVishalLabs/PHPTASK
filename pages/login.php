@@ -1,3 +1,8 @@
+<?php 
+    require_once '../includes/config_session.inc.php';
+    require_once '../includes/login_view.inc.php';
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +18,7 @@
       <h1>Welcome back</h1>
       <p class="muted">Sign in to continue to your account.</p>
 
-      <form id="loginForm" action="#" method="post" novalidate>
+      <form id="loginForm" action="../includes/login.inc.php" method="post" novalidate>
         <div class="row">
           <div class="field">
             <label for="email">Email</label>
@@ -38,6 +43,7 @@
           <a class="link" href="signup.php">Create account</a>
         </div>
       </form>
+      <?php check_login_errors(); ?>
     </section>
   </main>
 
