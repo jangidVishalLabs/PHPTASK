@@ -1,0 +1,53 @@
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --primary:#2563eb;
+  --accent:#0ea5a4;
+  --radius:12px;
+  --maxw:460px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg),#eef2ff);
+  color:#0f172a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+}
+.form-page{width:100%;max-width:var(--maxw)}
+.form-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:0 6px 30px rgba(15,23,42,0.08);
+  border:1px solid rgba(15,23,42,0.04);
+}
+.form-card h1{margin:0 0 6px;font-size:20px}
+.muted{color:var(--muted);margin:0 0 16px}
+.small{font-size:13px}
+.row{display:flex;gap:12px;margin-bottom:12px}
+.field{flex:1;display:flex;flex-direction:column}
+.field.half{flex:1}
+label{font-size:13px;margin-bottom:6px;color:#111827}
+input[type="text"],input[type="email"],input[type="password"],input[type="tel"],select{
+  padding:10px 12px;border-radius:8px;border:1px solid #e6e9ef;background:#fff;font-size:14px
+}
+select{appearance:none}
+.actions{display:flex;align-items:center;gap:12px;margin-top:14px}
+.btn{padding:10px 14px;border-radius:9px;border:0;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--primary);color:#fff}
+.link{color:var(--primary);text-decoration:none;font-size:14px}
+.muted a{color:var(--primary)}
+.checkbox{display:flex;align-items:center;gap:8px;font-size:14px}
+.right{margin-left:auto}
+
+@media (max-width:520px){
+  .row{flex-direction:column}
+  .actions{flex-direction:column;align-items:stretch}
+  .right{margin-left:0}
+}
