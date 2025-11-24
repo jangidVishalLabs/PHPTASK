@@ -1,0 +1,255 @@
+/* Root Variables */
+:root {
+    --primary: #2563eb;
+    --muted: #64748b;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --border: rgba(15, 23, 42, 0.08);
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: #0f172a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Reusable */
+.form-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.04);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn.primary:hover {
+    opacity: 0.9;
+}
+
+.link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: 14px;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border-radius: 12px;
+}
+
+.nav .brand {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 20px;
+}
+
+.nav .nav-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav a {
+    color: #0f172a;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background: #f1f5f9;
+}
+
+/* HERO SECTION */
+.hero-section {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.hero-left h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+/* SECTION WRAPPER */
+.section {
+    padding: 40px 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.section h2 {
+    margin-bottom: 6px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* FEATURE GRID */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.feature {
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+/* HOW IT WORKS */
+.row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.field {
+    flex: 1;
+}
+
+/* PRICING */
+.pricing-grid {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.plan {
+    flex: 1;
+    background: var(--card-bg);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+}
+
+/* CONTACT FORM */
+.field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.field input:focus {
+    border-color: var(--primary);
+}
+
+/* FOOTER */
+.footer {
+    padding: 22px 0;
+    margin-top: 30px;
+    border-top: 1px solid rgba(15, 23, 42, 0.05);
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-grid,
+    .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-grid {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 550px) {
+    .feature-grid,
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-left h1 {
+        font-size: 24px;
+    }
+
+    .nav {
+        padding: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
